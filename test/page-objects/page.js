@@ -1,12 +1,17 @@
-import { browser, $ } from '@wdio/globals'
-
 class Page {
+  /**
+   * @param {import('@playwright/test').Page} page
+   */
+  constructor(page) {
+    this.page = page
+  }
+
   get pageHeading() {
-    return $('h1')
+    return this.page.locator('h1.govuk-heading-xl')
   }
 
   open(path) {
-    return browser.url(path)
+    return this.page.goto(path)
   }
 }
 

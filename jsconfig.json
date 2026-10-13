@@ -1,11 +1,17 @@
 {
   "compilerOptions": {
-    "target": "es2020",
-    "baseUrl": "./",
-    "paths": {
-      "#page-objects/*": ["./test/page-objects/*"],
-      "#components/*": ["./test/components/*"]
-    }
+    "target": "es2022",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "checkJs": false,
+    "baseUrl": "./"
   },
-  "exclude": ["node_modules", "build", "docker"]
+  "exclude": [
+    "node_modules",
+    "build",
+    "docker",
+    "allure-results",
+    "allure-report",
+    "test-results"
+  ]
 }

@@ -1,9 +1,9 @@
 import { Page } from '#page-objects/page'
 
-class HomePage extends Page {
+class PesticidesOcrHomePage extends Page {
   open() {
     return super.open('/')
   }
 }
 
-export default new HomePage()
+export { PesticidesOcrHomePage }
