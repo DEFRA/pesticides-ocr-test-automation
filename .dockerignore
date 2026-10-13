@@ -1,5 +1,12 @@
 node_modules
 Dockerfile
+.env
 .git
 .github
 .husky
+allure-results
+allure-report
+test-results
+playwright-report
+log
+*.log

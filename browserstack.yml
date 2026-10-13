@@ -1,0 +1,36 @@
+userName: ${BROWSERSTACK_USER}
+accessKey: ${BROWSERSTACK_KEY}
+
+projectName: pesticides-ocr-test-automation
+buildName: ${BROWSERSTACK_BUILD_NAME}
+buildIdentifier: '#${DATE_TIME}'
+
+# Configure as required
+platforms:
+  - os: Windows
+    osVersion: 11
+    browserName: chrome
+    browserVersion: latest
+    playwrightConfigOptions:
+      name: windows11:chrome
+  - os: OS X
+    osVersion: Sequoia
+    browserName: playwright-webkit
+    browserVersion: latest
+    playwrightConfigOptions:
+      name: macSequoia:webkit
+
+browserstackLocal: true
+browserStackLocalOptions:
+  forceLocal: false
+  onlyAutomate: true
+
+acceptSslCerts: true
+
+testObservability: true
+
+networkLogs: true
+networkLogsOptions:
+  captureContent: false
+
+idleTimeout: 300

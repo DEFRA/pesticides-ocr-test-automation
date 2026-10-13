@@ -11,19 +11,18 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - uses: actions/checkout@v4
-      with:
-        repository: DEFRA/cdp-node-journey-test-suite-template
-
     - name: Docker Login
       uses: DEFRA/cdp-build-action/docker-login@main
 
     - uses: actions/setup-node@v4
       with:
-        node-version: 20
+        node-version-file: .nvmrc
         cache: npm
     - name: Setup the tests
-      run: npm i
+      run: npm ci
+      shell: bash
+    - name: Install Playwright browsers
+      run: npx playwright install --with-deps chromium
       shell: bash
     - name: Start docker compose
       shell: bash
@@ -33,9 +32,14 @@ runs:
           docker compose up --wait-timeout 300 -d --quiet-pull
     - name: Run the tests
       shell: bash
-      run: |
-        npm run test:github
-        npm run report
+      env:
+        BASE_URL: http://localhost:3000
+        CI: true
+      run: npm run test:chromium
+    - name: Generate allure report
+      if: always()
+      run: npm run report
+      shell: bash
     - name: debug
       if: always()
       run: |
@@ -48,6 +52,12 @@ runs:
       with:
         name: allure-report
         path: ./allure-report
+    - name: Upload Playwright traces
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: playwright-test-results
+        path: ./test-results
     - name: Upload docker compose logs
       if: always()
       uses: actions/upload-artifact@v4
