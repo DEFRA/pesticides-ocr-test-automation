@@ -22,3 +22,5 @@ log/
 browserstackSetupConfig.json
 playwright-browserstack-sdk.config.*
 browserstack.err
+.playwright-mcp/
+.claude/settings.local.json
