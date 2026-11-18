@@ -23,6 +23,8 @@
     "format": "prettier --write \"**/*.{js,md,json}\"",
     "format:check": "prettier --check \"**/*.{js,md,json}\"",
     "git:pre-commit-hook": "npm run format:check && npm run lint",
+    "audit": "npm audit --registry=https://registry.npmjs.org/",
+    "audit:fix": "npm audit fix --registry=https://registry.npmjs.org/",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "postinstall": "npm run setup:husky",
@@ -37,9 +39,9 @@
     "@playwright/test": "1.63.0",
     "allure-commandline": "2.46.1",
     "allure-playwright": "3.13.0",
-    "browserstack-node-sdk": "1.72.0",
+    "browserstack-node-sdk": "1.79.0",
     "global-agent": "3.0.0",
-    "undici": "7.29.0"
+    "undici": "7.30.2"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
@@ -51,5 +53,15 @@
     "globals": "17.13.0",
     "husky": "9.1.7",
     "prettier": "3.9.6"
+  },
+  "overrides": {
+    "basic-ftp": "6.2.6",
+    "glob": "14.0.4",
+    "@eslint/config-array": {
+      "minimatch": "11.0.8"
+    },
+    "eslint": {
+      "minimatch": "11.0.8"
+    }
   }
 }
